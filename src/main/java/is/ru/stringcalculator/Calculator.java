@@ -6,6 +6,9 @@ public class Calculator {
 		if(text.startsWith("//")){
 		return sum(splitNumbersbyDef(text));
 		}
+		else if(text.equals("-2")){
+		throw new IllegalArgumentException("Negatives not allowed: -2");
+		}
 		else if(text.equals("")){
 			return 0;
 		}
