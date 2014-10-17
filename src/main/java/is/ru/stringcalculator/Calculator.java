@@ -6,9 +6,6 @@ public class Calculator {
 		if(text.startsWith("//")){
 		return sum(splitNumbersbyDef(text));
 		}
-		else if(text.equals("-2")){
-		throw new IllegalArgumentException("Negatives not allowed: -2");
-		}
 		else if(text.equals("")){
 			return 0;
 		}
@@ -24,12 +21,14 @@ public class Calculator {
 	}
 
 	private static String[] splitNumbers(String numbers){
-	    return numbers.split(",|\n");
+	   	 negativeNumberCheck(numbers.split(",|\n"));
+		 return numbers.split(",|\n");
 	}
 
 	private static String[] splitNumbersbyDef(String numbers){
 		String str = new String(numbers.substring(2,3));
 		String stri = new String(numbers.substring(3));
+		negativeNumberCheck(stri.split(str));
 		return stri.split(str);
 	}
       
@@ -40,6 +39,22 @@ public class Calculator {
 		}
 		return total;
     }
+
+	private static void negativeNumberCheck(String[] numbers){
+	String str = new String("");
+	for(int i = 0; i < numbers.length; i = i+1){
+		if(Integer.parseInt(numbers[i]) < 0){
+			if(str.length() == 0){
+			str = numbers[i];
+			}
+			else{
+			str = str + "," + numbers[i];
+			}
+		}
+	}
+	if(str.length() > 0)
+	throw new IllegalArgumentException("Negatives not allowed: " + str);
+	}
 
 
 
