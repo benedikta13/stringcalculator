@@ -22,23 +22,23 @@ public class Calculator {
 
 	private static String[] splitNumbers(String numbers){
 	   	 negativeNumberCheck(numbers.split(",|\n"));
-		 return numbers.split(",|\n");
+		 return removeBigNumbers(numbers.split(",|\n"));
 	}
 
 	private static String[] splitNumbersbyDef(String numbers){
 		String str = new String(numbers.substring(2,3));
 		String stri = new String(numbers.substring(3));
 		negativeNumberCheck(stri.split(str));
-		return stri.split(str);
+		return removeBigNumbers(stri.split(str));
 	}
       
-    private static int sum(String[] numbers){
- 	    int total = 0;
-        for(String number : numbers){
+	private static int sum(String[] numbers){
+		int total = 0;
+        	for(String number : numbers){
 		    total += toInt(number);
 		}
 		return total;
-    }
+	}
 
 	private static void negativeNumberCheck(String[] numbers){
 	String str = new String("");
@@ -56,6 +56,13 @@ public class Calculator {
 	throw new IllegalArgumentException("Negatives not allowed: " + str);
 	}
 
-
+	private	static String[] removeBigNumbers(String[] numbers){
+		for(int i = 0; i < numbers.length; i = i+1){
+			if(Integer.parseInt(numbers[i]) > 1000){
+			numbers[i] = "0";
+			}
+		}
+		return numbers;
+	}
 
 }
