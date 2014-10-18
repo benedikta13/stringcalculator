@@ -73,4 +73,10 @@ public class CalculatorTest {
 	public void testSingleNumber(){
 	assertEquals(5,Calculator.add("5"));
 	}
+
+	/* this didn't work out
+	@Test
+	public void testLongerDelimiters(){
+	assertEquals(7,"//[***]\n1***2***4");
+	}*/
 }

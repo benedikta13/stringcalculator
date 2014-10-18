@@ -1,10 +1,15 @@
 package is.ru.stringcalculator;
 
+import java.util.regex.Pattern;
+
 public class Calculator {
 
 	public static int add(String text){
+		/*if(text.startsWith("//[")){
+			return sum(splitNumbersbyLongDef(text));
+		}*/
 		if(text.startsWith("//")){
-		return sum(splitNumbersbyDef(text));
+			return sum(splitNumbersbyDef(text));
 		}
 		else if(text.equals("")){
 			return 0;
@@ -27,14 +32,24 @@ public class Calculator {
 	   	 negativeNumberCheck(numbers.split(",|\n"));
 		 return removeBigNumbers(numbers.split(",|\n"));
 	}
+	
+	// the commented code was an attempt to understand/do step nr 7
+	// it did not work
+	/*private static String[] splitNumbersbyLongDef(String numbers){
+		//String str = new String(numbers.substring(3,4);
+		//String str = new String("1,2,4");
+		//return removeBigNumbers(str.split("*"));
+		String pat = "1,2,4";
+		return removeBigNumbers(pat.split(","));
+	}*/
 
 	private static String[] splitNumbersbyDef(String numbers){
 		String str = new String(numbers.substring(2,3));
-		String stri = new String(numbers.substring(3));
+		String stri = new  String(numbers.substring(3));
 		negativeNumberCheck(stri.split(str));
 		return removeBigNumbers(stri.split(str));
 	}
-      
+
 	private static int sum(String[] numbers){
 		int total = 0;
         	for(String number : numbers){
