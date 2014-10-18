@@ -53,5 +53,14 @@ public class CalculatorTest {
 	assertEquals("Negatives not allowed: -2",e.getMessage());
 	}
 	}
-
+	
+	@Test
+	public void testExpectedException2(){
+	try{
+	Calculator.add("3,-4,5,-2");
+	}
+	catch(IllegalArgumentException e){
+	assertEquals("Negatives not allowed: -4,-2",e.getMessage());
+	}
+	}
 }
