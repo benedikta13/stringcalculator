@@ -12,6 +12,9 @@ public class Calculator {
 		else if(text.contains(",")){
 			return sum(splitNumbers(text));
 		}
+		else if(text.length() == 1){
+			return Integer.parseInt(text);
+		}
 		else
 			return 1;
 	}

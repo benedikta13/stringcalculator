@@ -68,4 +68,9 @@ public class CalculatorTest {
 	public void testForBigNumbers(){
 	assertEquals(6,Calculator.add("1,1005,3,2000,2"));
 	}
+
+	@Test
+	public void testSingleNumber(){
+	assertEquals(5,Calculator.add("5"));
+	}
 }
